@@ -15,6 +15,7 @@ const Dashboard = () => {
   console.log({ statsLoading, appErr, serverErr, stats });
   const exp = stats?.expensesStats[0];
   const inc = stats?.incomeStats[0];
+  console.log(exp);
 
   return (
     <>
