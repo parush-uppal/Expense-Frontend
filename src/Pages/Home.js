@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bg from "../img/data.svg";
+import bg from "../img/19198884.jpg";
 const Home = () => {
   return (
     <>
       <section className="position-relative pb-5">
         <img
-          className="d-none d-lg-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid "
+          className="d-none d-sm-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid "
           style={{ objectFit: "cover" }}
           src={bg}
           alt=""
@@ -14,7 +14,7 @@ const Home = () => {
         <div className="position-relative">
           <div className="container">
             <div className="row pt-5">
-              <div className="col-12 col-lg-5 ms-auto">
+              <div className="col-12 col-lg-5 ms-auto shadow-lg p-3 mb-5 bg-white rounded">
                 <div className="mb-5">
                   <h2 className="display-4 fw-bold mb-5">
                     Keep Track of Your Income & Expenses
@@ -23,25 +23,25 @@ const Home = () => {
                     View all your income and expenses flow from your team in one
                     dashboard
                   </p>
-                  <div className="d-flex flex-wrap">
+                  <div className="d-flex flex-wrap justify-content-center">
                     <Link
                       to="/profile"
                       className="btn btn-primary me-2 mb-2 mb-sm-0"
                     >
                       Track your performance
                     </Link>
-                    <a
+                    {/* <a
                       target="_blank"
                       className="btn btn-secondary mb-2 mb-sm-0"
                       href="https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw"
                     >
                       Video Tutorial
-                    </a>
+                    </a> */}
                   </div>
                 </div>
-                <h1 className="text-danger">Admin Login </h1>
-                <p>User name: admin@gmail.com</p>
-                <p>password: 12345</p>
+                {/* <h1 className="text-danger">Admin Login </h1> */}
+                {/* <p>User name: admin@gmail.com</p> */}
+                {/* <p>password: 12345</p> */}
                 <div className="row align-items-center pt-5">
                   <div className="col-6 col-md-4 col-lg-3 col-xl-2 text-center mb-5">
                     <img

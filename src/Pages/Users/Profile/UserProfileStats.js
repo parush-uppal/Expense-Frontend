@@ -15,8 +15,8 @@ const UserProfileStats = ({
   numOfTransInc,
 }) => {
   //format curr
-  const formattedAmt = useCurrencyFormatter("USD", totalExp);
-  const formattedAmtInc = useCurrencyFormatter("USD", totalInc);
+  const formattedAmt = useCurrencyFormatter("INR", totalExp);
+  const formattedAmtInc = useCurrencyFormatter("INR", totalInc);
   //format date
 
   return (
