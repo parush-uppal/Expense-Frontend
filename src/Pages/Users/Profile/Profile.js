@@ -78,9 +78,9 @@ const Profile = () => {
             <div className="position-relative p-8 border rounded-2">
               <div className="d-flex mb-6 justify-content-center">
                 <img
-                  className="img-fluid me-4 rounded-2"
+                  className="img-fluid me-4 rounded-2 "
                   //   style="width: 64px; height: 64px;"
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=faces&amp;cs=tinysrgb&amp;fit=crop&amp;h=128&amp;w=128"
+                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=faces&amp;cs=tinysrgb&amp;fit=crop&amp;h=128&amp;w=180"
                   alt=""
                 />
                 <div>
