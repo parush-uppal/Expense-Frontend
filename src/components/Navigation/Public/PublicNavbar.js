@@ -7,6 +7,7 @@ const PublicNavbar = () => {
         <div class="container-fluid">
           <Link to="/" className="navbar-brand">
             <i class="bi bi-currency-exchange fs-1 text-warning "></i>
+            {/* <i class="bi bi-cash-coin"></i> */}
           </Link>
           <button
             class="navbar-toggler"
