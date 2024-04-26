@@ -17,6 +17,7 @@ export const fetchAccountStatsAction = createAsyncThunk(
     //http call
     try {
       const { data } = await axios.get(`${baseUrl}/api/stats`, config);
+      console.log(data);
       return data;
     } catch (error) {
       if (!error.response) {

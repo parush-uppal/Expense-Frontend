@@ -27,68 +27,38 @@ const Retirment = () => {
 
 
     const [financialInfo, setFinancialInfo] = useState({
-        currentAge: 0,
-        retirementAge: 0,
-        monthlySalary: 0,
-        monthlyExpense: 0,
-        inflationRate: 0,
+        currentAge:"",
+        retirementAge: "",
+        monthlySalary:"",
+        monthlyExpense:"",
+        inflationRate: "",
     });
 
-  const handleChange = ({ target }) => {
-    const { value, name } = target;
-    setFinancialInfo({ ...financialInfo, [name]: value });
-  };
+    const handleChange = ({ target }) => {
+      console.log(financialInfo)
+      const { value, name } = target;
+      setFinancialInfo({ ...financialInfo, [name]: value });
+    };
 
 
   
 
 //   --------YAHA SE KRNA HAI---------
-  const [currentAge, setCurrentAge] = useState(financialInfo.currentAge);
-  const [retirementAge, setRetirementAge] = useState(financialInfo.retirementAge);
-  const [monthlySalary, setMonthlySalary] = useState(financialInfo.monthlySalary);
-  const [monthlyExpense, setMonthlyExpense] = useState(financialInfo.monthlyExpense);
-  const [inflationRate, setInflationRate] = useState(financialInfo.inflationRate);
+  
   const [tableData, setTableData] = useState([]);
   //income
   //expense
-
-
-  
-  useEffect(() => {
-    setCurrentAge(financialInfo.currentAge);
- }, [financialInfo.currentAge]);
-
- useEffect(() => {
-    setRetirementAge(financialInfo.retirementAge);
-}, [financialInfo.retirementAge]);
-
-useEffect(() => {
-    setMonthlySalary(financialInfo.monthlySalary);
-}, [financialInfo.monthlySalary]);
-
-useEffect(() => {
-    setMonthlyExpense(financialInfo.monthlyExpense);
-}, [financialInfo.monthlyExpense]);
-
-useEffect(() => {
-    setInflationRate(financialInfo.inflationRate);
-}, [financialInfo.inflationRate]);
-
-
-
-
-
 
   const expenses = useSelector(state => state?.expenses);
   const { expLoading, expAppErr, expServerErr, isExpCreated } = expenses;
   //initialize form
   const formik = useFormik({
     initialValues: {
-      currentAge:"",
-      retirementAge: "",
-      monthlySalary: "",
-      monthlyExpense: "",
-      inflationRate: "",
+      currentAge:30,
+      retirementAge: 60,
+      monthlySalary:30000,
+      monthlyExpense:20000,
+      inflationRate: 0.05,
     },
     onSubmit: values => {
       dispatch(addNewExpAction(values));
@@ -103,6 +73,7 @@ useEffect(() => {
   };
   
   const generateRetirementTable = () => {
+    console.log(financialInfo)
     // Calculate total years to retirement
     const yearsToRetirement = financialInfo.retirementAge - financialInfo.currentAge;
 
@@ -113,10 +84,10 @@ useEffect(() => {
     // Loop through each year until retirement
     for (let year = 1; year <= yearsToRetirement; year++) {
       // Calculate annual salary considering savings goal (replace with your formula)
-      const annualSalary = financialInfo.monthlySalary * 12 * (1 + financialInfo.inflationRate) ** year;
+      const annualSalary = parseInt(financialInfo.monthlySalary) * 12 * (1 + parseFloat(financialInfo.inflationRate)) ** year;
 
       // Calculate annual expense considering inflation
-      const annualExpense = financialInfo.monthlyExpense * 12 * (1 + financialInfo.inflationRate) ** year;
+      const annualExpense = parseInt(financialInfo.monthlyExpense) * 12 * (1 + parseFloat(financialInfo.inflationRate)) ** year;
 
       // Calculate annual savings (salary minus expense)
       const annualSavings = annualSalary - annualExpense;
@@ -171,9 +142,10 @@ useEffect(() => {
                   ) : null}
                   <div className="mb-3 input-group">
                     <input
-                      value={formik.values.currentAge}
+                      name="currentAge"
+                      value={financialInfo.currentAge}
                       onBlur={formik.handleBlur("currentAge")}
-                      onChange={formik.handleChange("currentAge")}
+                      onChange={handleChange}
                       className="form-control"
                       type="number"
                       placeholder="Enter CurrentAge"
@@ -185,9 +157,10 @@ useEffect(() => {
                   </div>
                   <div className="mb-3 input-group">
                     <input
-                      value={formik.values.retirementAge}
+                      name="retirementAge"
+                      value={financialInfo.retirementAge}
                       onBlur={formik.handleBlur("retirementAge")}
-                      onChange={formik.handleChange("retirementAge")}
+                      onChange={handleChange}
                       className="form-control"
                       type="number"
                       placeholder="Enter RetirementAge"
@@ -199,9 +172,10 @@ useEffect(() => {
                   </div>
                   <div className="mb-3 input-group">
                     <input
-                      value={formik.values.monthlySalary}
+                     name="monthlySalary"
+                      value={financialInfo.monthlySalary}
                       onBlur={formik.handleBlur("monthlySalary")}
-                      onChange={formik.handleChange("monthlySalary")}
+                      onChange={handleChange}
                       className="form-control"
                       type="number"
                       placeholder="Enter MonthlySalary"
@@ -213,9 +187,10 @@ useEffect(() => {
                   </div>
                   <div className="mb-3 input-group">
                     <input
-                      value={formik.values.monthlyExpense}
+                      name="monthlyExpense"
+                      value={financialInfo.monthlyExpense}
                       onBlur={formik.handleBlur("monthlyExpense")}
-                      onChange={formik.handleChange("monthlyExpense")}
+                      onChange={handleChange}
                       className="form-control"
                       type="number"
                       placeholder="Enter MonthlyExpense"
@@ -227,9 +202,10 @@ useEffect(() => {
                   </div>
                   <div className="mb-3 input-group">
                     <input
-                      value={formik.values.inflationRate}
+                      name="inflationRate"
+                      value={financialInfo.inflationRate}
                       onBlur={formik.handleBlur("inflationRate")}
-                      onChange={formik.handleChange("inflationRate")}
+                      onChange={handleChange}
                       className="form-control"
                       type="number"
                       placeholder="Enter InflationRate"
