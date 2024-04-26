@@ -55,6 +55,9 @@ const PrivateNavbar = () => {
               <Link to="/add-income" className="btn btn-success me-2">
                 New Income
               </Link>
+              <Link to="/savings" className="btn btn-info me-2">
+                Predict Savings
+              </Link>
               <button
                 onClick={() => dispatch(logoutAction())}
                 className="btn btn-warning me-2"

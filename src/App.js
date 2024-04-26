@@ -21,6 +21,8 @@ import AddExpense from "./Pages/Expenses/AddExpense";
 import PrivateProtectRoute from "./components/Navigation/PrivateProtectRoute";
 import AdminRoute from "./components/Navigation/AdminRoute";
 import NotAdmin from "./components/NotAdmin/NotAdmin";
+import Retirment from "./Pages/Expenses/Retirment";
+import Table from "./Pages/Expenses/Table";
 
 const options = {
   timeout: 50000,
@@ -70,6 +72,8 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <PrivateProtectRoute exact path="/profile" component={Profile} />
           <PrivateProtectRoute exact path="/incomes" component={IncomeList} />
+          <PrivateProtectRoute exact path="/savings" component={Retirment} />
+          <PrivateProtectRoute exact path="/table" component={Table} />
           <PrivateProtectRoute
             exact
             path="/expenses"
