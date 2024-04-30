@@ -10,6 +10,7 @@ import { fetchIncomesAction } from "../../redux/slices/income/incomeSlices";
 
 const IncomeList = ({ location: { state } }) => {
   const [page, setPage] = useState(1);
+  const users = useSelector(state => state?.users);
   const dispatch = useDispatch();
   //hide some table tabs to display user income information
   const dataType = state?.data;
@@ -91,11 +92,13 @@ const IncomeList = ({ location: { state } }) => {
                     <h2>No Income Found</h2>
                   ) : (
                     incomeList?.docs?.map(exp => (
+
+                      users.userAuth._id === exp.user.id ?
                       <ContentDetails
                         dataType={dataType}
                         item={exp}
                         key={exp?._id}
-                      />
+                      /> : ""
                     ))
                   )}
                 </tbody>

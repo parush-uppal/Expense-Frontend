@@ -12,6 +12,7 @@ import calTransaction from "../../utils/accStatistics";
 
 const ExpensesList = () => {
   const [page, setPage] = useState(1);
+  const users = useSelector(state => state?.users);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchExpensesAction(page));
@@ -19,7 +20,9 @@ const ExpensesList = () => {
   //expenses
   const expenses = useSelector(state => state.expenses);
   const { expLoading, expenseList, expAppErr, expServerErr } = expenses;
-  console.log({ expLoading, expenseList, expAppErr, expServerErr });
+  //console.log(users.userAuth._id);
+ // console.log({ expLoading, expenseList, expAppErr, expServerErr });
+ //console.log(expenseList.docs);
   const totalExp = calTransaction(expenseList?.docs ? expenseList?.docs : []);
 
   //user Expenses
@@ -100,7 +103,10 @@ const ExpensesList = () => {
                       <h2>No Expense Found</h2>
                     ) : (
                       expenseList?.docs?.map(exp => (
-                        <ContentDetails item={exp} key={exp?._id} />
+                        
+                          users.userAuth._id === exp.user.id ? <ContentDetails item={exp} key={exp?._id} />: ""
+                        
+                        
                       ))
                     )}
                   </>
